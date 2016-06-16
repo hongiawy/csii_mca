@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:osgi="http://www.springframework.org/schema/osgi" 
+	xmlns:pe="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi	http://www.springframework.org/schema/osgi/spring-osgi.xsd
+		http://www.csii.com.cn/schema/pe	http://www.csii.com.cn/schema/pe/pe-1.0.xsd
+		" >	
+	
+	<!-- Export -->
+				
+	<osgi:service id="eappdbDataSourceService" ref="eappdbDataSource"  >
+	<osgi:interfaces>
+		<value>javax.sql.DataSource</value>
+	</osgi:interfaces>
+	</osgi:service>	
+	
+	<osgi:service id="eappdbSqlExecutorService" ref="eappdbSqlExecutor" interface="com.csii.pe.service.jdbc.SqlExecutor" />
+	
+	<osgi:service id="eappdbTxTemplateService" ref="eappdbTxTemplate" >
+		<osgi:interfaces>
+			<value>org.springframework.transaction.support.TransactionTemplate</value>
+			<value>org.springframework.transaction.support.TransactionOperations</value>
+		</osgi:interfaces>
+	 </osgi:service>
+	
+	<!-- Import -->
+					
+</beans>

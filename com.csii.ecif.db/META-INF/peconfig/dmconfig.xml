@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dmconfig>
+ <propdef>
+	<scope>Database</scope>
+	
+ 	<scopenames>
+ 	  <en_US>ECIF Database Config</en_US>
+ 	  <zh_CN>ECIF子系统数据库配置</zh_CN>
+ 	</scopenames>
+
+	<properties>	
+	 <propdefentry name="ecifdbDataSource.driverClassName" >
+	 	<type>String</type>
+	 	<right>RW</right>
+	 	<allowedValues>
+	 		<value>oracle.jdbc.OracleDriver</value>
+	 	</allowedValues>
+	 	<propnames>
+	 	  <en_US>JDBC Driver Class Name</en_US>
+	 	  <zh_CN>JDBC 驱动类名</zh_CN>
+	 	</propnames>
+	 	<defaultValue>oracle.jdbc.OracleDriver</defaultValue>	 	
+	 </propdefentry>	
+	 
+	<propdefentry name="ecifdbDataSource.url" >
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC URL</en_US>
+	 	  <zh_CN>JDBC URL</zh_CN>
+	 	</propnames>
+	 	<defaultValue>jdbc:oracle:thin:@172.16.89.128:1521:ebank</defaultValue>	 	
+	 </propdefentry>		 
+	 
+	<propdefentry name="ecifdbDataSource.username" >
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC User Name</en_US>
+	 	  <zh_CN>JDBC 用户名</zh_CN>
+	 	</propnames>
+	 	<defaultValue>ecif2</defaultValue>	 	
+	 </propdefentry>	
+	 
+ 	<propdefentry name="ecifdbDataSource.password" >
+	 	<type>Password</type>
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC User Password</en_US>
+	 	  <zh_CN>JDBC 用户密码</zh_CN>
+	 	</propnames>
+	 	<defaultValue>ecif2</defaultValue>	 	
+	 </propdefentry>	
+	 
+	 <propdefentry name="ecifdbDataSource.initailSize" >
+	 	<type>Integer</type>
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC Connection Pool init size</en_US>
+	 	  <zh_CN>JDBC 连接池初始连接数</zh_CN>
+	 	</propnames>
+	 	<defaultValue>1</defaultValue>	 	
+	 </propdefentry>
+	 
+	 <propdefentry name="ecifdbDataSource.maxActive" >
+	 	<type>Integer</type>
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC Connection Pool Max Active</en_US>
+	 	  <zh_CN>JDBC 连接池最大连接数</zh_CN>
+	 	</propnames>
+	 	<defaultValue>2</defaultValue>	 	
+	 </propdefentry>
+	 
+ 	<propdefentry name="ecifdbDataSource.maxWait" >
+	 	<type>Integer</type>
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC Connection Pool Max Wait</en_US>
+	 	  <zh_CN>JDBC 最大等待时间</zh_CN>
+	 	</propnames>
+	 	<defaultValue>-1</defaultValue>	 	
+	 </propdefentry>
+	 
+	 <propdefentry name="ecifdbDataSource.maxIdle" >
+	 	<type>Integer</type>
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC Connection Pool Max Idle</en_US>
+	 	  <zh_CN>JDBC 连接池最大空闲连接数</zh_CN>
+	 	</propnames>
+	 	<defaultValue>5</defaultValue>	 	
+	 </propdefentry>
+	 
+	<propdefentry name="ecifdbDataSource.minIdle" >
+	 	<type>Integer</type>
+	 	<right>RW</right>
+	 	<propnames>
+	 	  <en_US>JDBC Connection Pool Min Idle</en_US>
+	 	  <zh_CN>JDBC 连接池最小空闲连接数</zh_CN>
+	 	</propnames>
+	 	<defaultValue>0</defaultValue>	 	
+	 </propdefentry>		 	 
+	 	 
+	</properties>
+	
+</propdef>
+
+</dmconfig>

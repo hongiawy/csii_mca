@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config PUBLIC "-//PE//DTD BEAN//EN" "http://www.csii.com.cn/dtd/pe-config.dtd">
+
+<config >
+
+	<!-- 系统配置属性文件 -->
+
+	<bean id="placeholderConfig" class="com.csii.pe.dynamic.core.CMPropertyPlaceholderConfigurer">
+		<ref name="bundleContext" >bundleContext</ref>
+		 <list name="locations">
+		   <param>classpath:/META-INF/config/peconfigdev.properties</param>
+		 </list>		
+		
+	</bean>
+
+</config>

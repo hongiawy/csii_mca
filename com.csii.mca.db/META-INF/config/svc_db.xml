@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config PUBLIC "-//PE//DTD BEAN//EN" "http://www.csii.com.cn/dtd/pe-config.dtd">
+
+<config>
+
+	<!--* 说明：
+		*	
+		*	数据库连接服务配置。
+		*
+		*	说明：此处提供了对数据库服务的连接配置、事务管理配置。
+		*
+	 -->
+
+<!--
+		<bean name="dataSource" class="oracle.jdbc.pool.OracleDataSource">
+			<param name="URL">${eappdbDataSource.url}</param>
+			<param name="user">${eappdbDataSource.username}</param>
+			<param name="password">${eappdbDataSource.password}</param>
+			
+		</bean>		
+		-->
+		
+	<!-- comment  the following definition for J2EE deployment -->
+		
+	<bean id="eappdbDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" init-method="createPool" destroy-method="close" >
+		 
+		<param name="driverClassName">${eappdbDataSource.driverClassName}</param>
+								
+		<param name="url">${eappdbDataSource.url}</param>
+		<param name="username">${eappdbDataSource.username}</param>
+		<param name="password">${eappdbDataSource.password}</param>
+        <param name ="initialSize">${eappdbDataSource.initailSize}</param>
+        <param name ="maxActive">${eappdbDataSource.maxActive}</param>
+        <param name ="maxWait">${eappdbDataSource.maxWait}</param>
+        <param name ="maxIdle">${eappdbDataSource.maxIdle}</param>
+        <param name ="minIdle">${eappdbDataSource.minIdle}</param>          
+        <param name ="testWhileIdle">false</param>   
+        <param name ="testOnBorrow">false</param>         
+        <param name ="fairQueue">true</param>       
+        <param name ="jmxEnabled">false</param>        
+        <param name ="name">dataSource</param>
+        <param name ="validationQuery">SELECT * from dual</param>
+        <param name ="jdbcInterceptors">SlowQueryReport(threshold=500)</param>
+			
+	</bean>	 
+		
+
+	<!-- sqlExecutor configs -->
+	<sqlExecutor id="eappdbSqlExecutor">
+		<param name="showSql">false</param>
+		<ref name="dataSource">eappdbDataSource</ref>
+	</sqlExecutor>
+
+	<!-- sqlMap configs -->
+	
+	<!-- transaction template config -->
+	<!-- eappdb -->
+	<transactionManager id="eappdbTxManager">
+		<ref name="dataSource">eappdbDataSource</ref>
+	</transactionManager>
+
+	<transactionTemplate id="eappdbTxTemplate">
+		<ref name="transactionManager">eappdbTxManager</ref>
+		<param name="propagationBehaviorName">PROPAGATION_REQUIRED</param>
+		<param name="isolationLevelName">ISOLATION_DEFAULT</param>
+		<param name="readOnly">false</param>
+		<param name="timeout">15</param><!-- in seconds -->
+	</transactionTemplate>	
+
+</config>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config PUBLIC "-//PE//DTD BEAN//EN" "http://www.csii.com.cn/dtd/pe-config.dtd">
+
+<config>
+
+	<!--* 说明：
+		*	
+		*	数据库连接服务配置。
+		*
+		*	说明：此处提供了对数据库服务的连接配置、事务管理配置。
+		*
+	 -->
+
+<!--
+		<bean name="dataSource" class="oracle.jdbc.pool.OracleDataSource">
+			<param name="URL">${ecifdbDataSource.url}</param>
+			<param name="user">${ecifdbDataSource.username}</param>
+			<param name="password">${ecifdbDataSource.password}</param>
+			
+		</bean>		
+		-->
+		
+	<!-- comment  the following definition for J2EE deployment -->
+		
+	<bean id="ecifdbDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" init-method="createPool" destroy-method="close" >
+		 
+		<param name="driverClassName">${ecifdbDataSource.driverClassName}</param>
+								
+		<param name="url">${ecifdbDataSource.url}</param>
+		<param name="username">${ecifdbDataSource.username}</param>
+		<param name="password">${ecifdbDataSource.password}</param>
+        <param name ="initialSize">${ecifdbDataSource.initailSize}</param>
+        <param name ="maxActive">${ecifdbDataSource.maxActive}</param>
+        <param name ="maxWait">${ecifdbDataSource.maxWait}</param>
+        <param name ="maxIdle">${ecifdbDataSource.maxIdle}</param>
+        <param name ="minIdle">${ecifdbDataSource.minIdle}</param>          
+        <param name ="testWhileIdle">false</param>   
+        <param name ="testOnBorrow">false</param>         
+        <param name ="fairQueue">true</param>       
+        <param name ="jmxEnabled">false</param>        
+        <param name ="name">dataSource</param>
+        <param name ="validationQuery">SELECT * from dual</param>
+        <param name ="jdbcInterceptors">SlowQueryReport(threshold=500)</param>
+			
+	</bean>	 
+		
+
+	<!-- sqlExecutor configs -->
+	<sqlExecutor id="ecifdbSqlExecutor">
+		<param name="showSql">false</param>
+		<ref name="dataSource">ecifdbDataSource</ref>
+	</sqlExecutor>
+
+	<!-- sqlMap configs -->
+	
+	<!-- transaction template config -->
+	<!-- ecifdb -->
+	<transactionManager id="ecifdbTxManager">
+		<ref name="dataSource">ecifdbDataSource</ref>
+	</transactionManager>
+
+	<transactionTemplate id="ecifdbTxTemplate">
+		<ref name="transactionManager">ecifdbTxManager</ref>
+		<param name="propagationBehaviorName">PROPAGATION_REQUIRED</param>
+		<param name="isolationLevelName">ISOLATION_DEFAULT</param>
+		<param name="readOnly">false</param>
+		<param name="timeout">15</param><!-- in seconds -->
+	</transactionTemplate>	
+
+</config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:osgi="http://www.springframework.org/schema/osgi" 
+	xmlns:pe="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi	http://www.springframework.org/schema/osgi/spring-osgi.xsd
+		http://www.csii.com.cn/schema/pe	http://www.csii.com.cn/schema/pe/pe-1.0.xsd
+		" >	
+	
+	<!-- Export -->
+				
+	<osgi:service id="ecifdbDataSourceService" ref="ecifdbDataSource"  >
+	<osgi:interfaces>
+		<value>javax.sql.DataSource</value>
+	</osgi:interfaces>
+	</osgi:service>	
+	
+	<osgi:service id="ecifdbSqlExecutorService" ref="ecifdbSqlExecutor" interface="com.csii.pe.service.jdbc.SqlExecutor" />
+	
+	<osgi:service id="ecifdbTxTemplateService" ref="ecifdbTxTemplate" >
+		<osgi:interfaces>
+			<value>org.springframework.transaction.support.TransactionTemplate</value>
+			<value>org.springframework.transaction.support.TransactionOperations</value>
+		</osgi:interfaces>
+	 </osgi:service>
+	
+	
+	<osgi:service id="ecifdbTxTemplateDelegateService"  ref="ecifdbTxTemplateProxyService" interface="org.springframework.transaction.support.TransactionOperations" >
+		
+	</osgi:service>
+	
+	<bean id="ecifdbTxTemplateProxyService" class="com.csii.pe.service.TransactionTemplateDelegateService">
+			<property name="transactionTemplate" ref="ecifdbTxTemplate" ></property>
+	</bean>
+	
+	<!-- Import -->
+					
+</beans>
