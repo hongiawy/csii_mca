@@ -28,7 +28,7 @@
 	 	  <en_US>JDBC URL</en_US>
 	 	  <zh_CN>JDBC URL</zh_CN>
 	 	</propnames>
-	 	<defaultValue>jdbc:oracle:thin:@172.16.89.128:1521:ebank</defaultValue>	 	
+	 	<defaultValue>jdbc:oracle:thin:@172.16.89.129:1521:ebank</defaultValue>	 	
 	 </propdefentry>		 
 	 
 	<propdefentry name="eappdbDataSource.username" >
