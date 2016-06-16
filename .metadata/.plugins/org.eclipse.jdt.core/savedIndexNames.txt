@@ -1,4 +1,0 @@
-INDEX VERSION 1.127+/Users/hongyunqiang/Documents/workspace/hong/.metadata/.plugins/org.eclipse.jdt.core
-3703194086.index
-1233761759.index
-301167597.index
