@@ -318,3 +318,16 @@ Caused by: java.io.IOException: Error writing request body to server
 	at org.eclipse.jgit.transport.BasePackPushConnection.writePack(BasePackPushConnection.java:306)
 	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:198)
 	... 8 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2016-06-16 20:18:06.410
+!MESSAGE Remote origin did not advertise Ref for branch refs/heads/master. This Ref may not exist in the remote or may be hidden by permission settings.
+!STACK 0
+org.eclipse.jgit.api.errors.RefNotAdvertisedException: Remote origin did not advertise Ref for branch refs/heads/master. This Ref may not exist in the remote or may be hidden by permission settings.
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:293)
+	at org.eclipse.egit.core.op.PullOperation$1.run(PullOperation.java:106)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.egit.core.op.PullOperation.execute(PullOperation.java:137)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI.execute(PullOperationUI.java:140)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI$1.runInWorkspace(PullOperationUI.java:115)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
