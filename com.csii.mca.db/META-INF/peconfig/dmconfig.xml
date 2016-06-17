@@ -47,7 +47,7 @@
 	 	  <en_US>JDBC User Password</en_US>
 	 	  <zh_CN>JDBC 用户密码</zh_CN>
 	 	</propnames>
-	 	<defaultValue>eip</defaultValue>	 	
+	 	<defaultValue>eip2</defaultValue>	 	
 	 </propdefentry>	
 	 
 	 <propdefentry name="eappdbDataSource.initailSize" >
